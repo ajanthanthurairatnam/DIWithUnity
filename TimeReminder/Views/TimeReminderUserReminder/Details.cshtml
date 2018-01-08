@@ -1,0 +1,35 @@
+﻿@model TimeReminder.Models.Classes.TimeReminderUserReminder
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UserReminder</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Reminder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reminder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReminderDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReminderDate)
+        </dd>
+      
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

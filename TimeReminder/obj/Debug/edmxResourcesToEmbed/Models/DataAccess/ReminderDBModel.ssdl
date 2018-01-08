@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ReminderDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="UserReminder">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Reminder" Type="varchar(max)" Nullable="false" />
+    <Property Name="ReminderDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_UserReminder_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserReminder" Type="Self.UserReminder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserReminder">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ReminderDBModelStoreContainer">
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserReminder" EntityType="Self.UserReminder" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_UserReminder_User" Association="Self.FK_UserReminder_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserReminder" EntitySet="UserReminder" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
