@@ -27,7 +27,5 @@ namespace TimeReminder.Models.DataAccess
     
         public virtual DbSet<UserReminder> UserReminders { get; set; }
         public virtual DbSet<User> Users { get; set; }
-
-        public System.Data.Entity.DbSet<TimeReminder.Models.Classes.TimeReminderUserReminder> TimeReminderUserReminders { get; set; }
     }
 }
