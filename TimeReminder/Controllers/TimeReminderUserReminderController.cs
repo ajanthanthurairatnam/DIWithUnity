@@ -51,7 +51,6 @@ namespace TimeReminder.Controllers
             try
             {
                 // TODO: Add insert logic here
-                timeReminderUserReminder.TimeReminderUsers= timeReminderUserReminderService.TimeReminderUsers();
                 timeReminderUserReminder = timeReminderUserReminderService.SaveMyReminder(timeReminderUserReminder);
                 return RedirectToAction("Index");
             }
